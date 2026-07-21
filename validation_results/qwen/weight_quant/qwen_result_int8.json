@@ -1,0 +1,58 @@
+{
+  "collector": "weight_quant",
+  "tier": "A",
+  "run_id": "flagship_weight_quant_int8",
+  "change": {
+    "baseline": "Qwen/Qwen2.5-7B-Instruct fp16",
+    "candidate": "Qwen/Qwen2.5-7B-Instruct int8",
+    "change_type": "weight_quant"
+  },
+  "business_goal": {
+    "reason": "lower-bit weights = less serving VRAM \u2014 fewer GPUs for the same fleet",
+    "expected_gain": {
+      "vram_reduction_pct": 50
+    }
+  },
+  "workload": {
+    "task_family": "math_reasoning",
+    "dataset": "gsm8k",
+    "num_prompts": 250
+  },
+  "metrics": {
+    "d_comm": 1.332,
+    "tau": 0.5,
+    "downstream_delta": {
+      "gsm8k_acc_drop_pts": 0.0
+    },
+    "per_domain": {
+      "math": 2.0037,
+      "multilingual": 2.4188,
+      "chat": 2.3803,
+      "code": 1.332,
+      "general": 2.2565
+    },
+    "short_eval": {
+      "benchmark": "GSM8K 5-shot exact-match (subset)",
+      "delta_pct": 0.0,
+      "verdict_by_benchmark": "looks_safe"
+    },
+    "verdict": "safe"
+  },
+  "decision_statement": "int8: worst-domain d=1.332 (code) vs tau=0.5 -> SAFE to deploy for this workload class; GSM8K moved +0.0 pts, consistent with the verdict.",
+  "cert_path": "/root/deltacert/validation/weight_quant/cert_int8.json",
+  "status": "completed",
+  "artifacts": {},
+  "notes": {
+    "environment": {
+      "timestamp_utc": "2026-07-12T08:26:59Z",
+      "python": "3.11.10",
+      "seed": 1234,
+      "torch": "2.4.1+cu121",
+      "transformers": "4.46.3",
+      "bitsandbytes": "0.49.2",
+      "datasets": "5.0.0",
+      "gpu": "NVIDIA H100 80GB HBM3"
+    },
+    "row": "int8"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "description": "",
+  "certified": false,
+  "threshold_d": 3.0,
+  "formula": "d_COMM = -log(E[4c*sqrt(1-c^2)] / 2), certified if d >= threshold",
+  "theorem": "Proposition 5.1, Shorya 2026",
+  "validation_status": "flagship_validated",
+  "layers": {
+    "weight_quant": {
+      "d_comm": 0.8253,
+      "divergence_bound": 0.876199,
+      "certified": false,
+      "budget": 1.3,
+      "n_samples": 250,
+      "n_domains": 5,
+      "worst_domain": "math",
+      "per_domain": {
+        "math": 0.8253,
+        "multilingual": 0.9642,
+        "chat": 1.0856,
+        "code": 1.2563,
+        "general": 1.021
+      },
+      "statistic": "min d_comm over domains (worst-domain, not average)",
+      "n_prompts": 250,
+      "cos_sim_min": 0.5713486829926908,
+      "cos_sim_mean": 0.9725006226635511
+    }
+  },
+  "metadata": {
+    "hostname": "3922ef7517eb",
+    "platform": "Linux-6.8.0-106-generic-x86_64-with-glibc2.35",
+    "python": "3.11.10",
+    "timestamp_utc": "2026-07-12T09:54:06Z",
+    "torch": "2.13.0+cu130",
+    "gpu": "NVIDIA H100 80GB HBM3",
+    "gpu_memory_bytes": 85017493504,
+    "cuda": "13.0",
+    "transformers": "5.13.1"
+  },
+  "signature": {
+    "alg": "Ed25519",
+    "key_id": "threvo-labs-v1",
+    "value": "nFkWPlqfhVWhGDw5wtg7qGA08H4vvgk0ezmTY5Et49RoMmFZ4yW05lHJutWttqt30XECNSC/2+Mz2BbnhMHkBQ=="
+  }
+}

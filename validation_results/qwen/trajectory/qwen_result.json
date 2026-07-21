@@ -1,0 +1,50 @@
+{
+  "collector": "trajectory",
+  "tier": "A",
+  "run_id": "flagship_trajectory_w4",
+  "change": {
+    "baseline": "Qwen/Qwen2.5-7B-Instruct fp16",
+    "candidate": "Qwen/Qwen2.5-7B-Instruct nf4 (W4)",
+    "change_type": "trajectory"
+  },
+  "business_goal": {
+    "reason": "run the coding agent on 4-bit weights (\u224860% VRAM saved) IF long generations hold",
+    "expected_gain": {
+      "vram_reduction_pct": 60
+    }
+  },
+  "workload": {
+    "task_family": "coding_agent_long_horizon",
+    "dataset": "humaneval_prompts",
+    "num_prompts": 39
+  },
+  "metrics": {
+    "d_comm": 0.0,
+    "tau": 3.0,
+    "downstream_delta": {
+      "median_first_divergence_token": 18.0
+    },
+    "trajectory": {
+      "measured": true,
+      "safe_until_token": 0,
+      "failure_after_token": 18
+    },
+    "verdict": "unsafe"
+  },
+  "decision_statement": "W4 for long-horizon coding: d_min=0.0; certified operating region \u2248 token 0; observed generations fork around token 18. NOT certified beyond the region \u2014 cap generation length or stay fp16",
+  "cert_path": "/root/deltacert/validation/trajectory/cert_trajectory.json",
+  "status": "completed",
+  "artifacts": {},
+  "notes": {
+    "environment": {
+      "timestamp_utc": "2026-07-12T08:43:06Z",
+      "python": "3.11.10",
+      "seed": 1234,
+      "torch": "2.4.1+cu121",
+      "transformers": "4.46.3",
+      "bitsandbytes": "0.49.2",
+      "datasets": "5.0.0",
+      "gpu": "NVIDIA H100 80GB HBM3"
+    }
+  }
+}

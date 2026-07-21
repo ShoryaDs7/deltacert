@@ -1,0 +1,26 @@
+{
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "certified": false,
+  "threshold_d": 3.0,
+  "layers": {
+    "trajectory": {
+      "n_trajectories": 50,
+      "n_positions_total": 49923,
+      "d_comm": 0.0,
+      "d_min_position_in_worst_trajectory": 443,
+      "d_final_mean": 0.7446638325081659,
+      "divergence_bound": 2.0,
+      "certified": false,
+      "statistic": "min d over all positions of all reference trajectories"
+    }
+  },
+  "theorem": "Proposition 5.1, Shorya 2026",
+  "description": "",
+  "formula": "d_COMM = -log(E[4c*sqrt(1-c^2)] / 2), certified if d >= threshold",
+  "validation_status": "flagship_validated",
+  "signature": {
+    "alg": "Ed25519",
+    "key_id": "threvo-labs-v1",
+    "value": "btjwl2kiLm2Yt4oo9AHnhSAvSrtOA28UFhzGdgkGdCJYMNmwUYHo3s5aENu/mTsm1fcGSdRxbXELEf8Ndzg5Cg=="
+  }
+}

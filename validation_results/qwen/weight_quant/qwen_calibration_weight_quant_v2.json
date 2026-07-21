@@ -1,0 +1,77 @@
+{
+  "families": {
+    "bnb": {
+      "calibrated_tau": 0.6146,
+      "provisional": true,
+      "n_configs": 2,
+      "n_safe_configs": 2,
+      "n_damaged_configs": 0,
+      "rows": [
+        {
+          "name": "int8",
+          "downstream_drop_pts": 0.0,
+          "downstream_drop_pts_source": "user-provided",
+          "materially_degraded": false,
+          "d_comm": 1.332,
+          "certified_at_calibrated_tau": true
+        },
+        {
+          "name": "nf4",
+          "downstream_drop_pts": 0.0,
+          "downstream_drop_pts_source": "user-provided",
+          "materially_degraded": false,
+          "d_comm": 0.6146,
+          "certified_at_calibrated_tau": true
+        }
+      ],
+      "caveat": "PROVISIONAL: every 'bnb' config in this sweep (n=2) was undamaged - there is no damaged config to set a two-sided boundary from. tau is placed at the lowest observed (undamaged) d_comm, which means the boundary-exact config certifies with zero margin ('>=', not '>') - measurement noise on a config sitting at exactly this d_comm could flip its verdict. Measure at least one damaged config in this family to firm this up."
+    },
+    "gptq": {
+      "calibrated_tau": 2.1481,
+      "provisional": false,
+      "n_configs": 4,
+      "n_safe_configs": 1,
+      "n_damaged_configs": 3,
+      "rows": [
+        {
+          "name": "gptq_int8",
+          "downstream_drop_pts": 0.0,
+          "downstream_drop_pts_source": "user-provided",
+          "materially_degraded": false,
+          "d_comm": 2.1481,
+          "certified_at_calibrated_tau": true
+        },
+        {
+          "name": "gptq_int4",
+          "downstream_drop_pts": -3.0,
+          "downstream_drop_pts_source": "user-provided",
+          "materially_degraded": true,
+          "d_comm": 0.8253,
+          "certified_at_calibrated_tau": false
+        },
+        {
+          "name": "gptq_int3",
+          "downstream_drop_pts": -33.0,
+          "downstream_drop_pts_source": "user-provided",
+          "materially_degraded": true,
+          "d_comm": 0.2615,
+          "certified_at_calibrated_tau": false
+        },
+        {
+          "name": "gptq_int2",
+          "downstream_drop_pts": -83.0,
+          "downstream_drop_pts_source": "user-provided",
+          "materially_degraded": true,
+          "d_comm": 0.0055,
+          "certified_at_calibrated_tau": false
+        }
+      ],
+      "caveat": "Calibrated from n=4 'gptq' config(s) on this specific model/workload \u2014 not a universal constant. More configs measured over time firm this up, the same way DeltaCert's own shipped defaults are an initial calibration from n=5 configs (see deltacert.py's _PROVISIONAL_METHOD_BUDGETS)."
+    }
+  },
+  "n_families": 2,
+  "downstream_degradation_threshold_pts": 2.0,
+  "caveat": "d_comm is not comparable across quantization methods, so tau is calibrated independently per method_family \u2014 see each family's own 'caveat' for its specific confidence level. Pooling families into one tau produces a false-safe when an undamaged config from one family sits below a damaged config from another on the pooled axis (see paper \u00a73.4 / SPEC.md).",
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "layer": "weight_quant"
+}

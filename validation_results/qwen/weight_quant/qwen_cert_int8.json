@@ -1,0 +1,42 @@
+{
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "description": "",
+  "certified": true,
+  "threshold_d": 3.0,
+  "formula": "d_COMM = -log(E[4c*sqrt(1-c^2)] / 2), certified if d >= threshold",
+  "theorem": "Proposition 5.1, Shorya 2026",
+  "validation_status": "flagship_validated",
+  "layers": {
+    "weight_quant": {
+      "d_comm": 1.332,
+      "divergence_bound": 0.527912,
+      "certified": true,
+      "budget": 0.5,
+      "n_samples": 250,
+      "n_domains": 5,
+      "worst_domain": "code",
+      "per_domain": {
+        "math": 2.0037,
+        "multilingual": 2.4188,
+        "chat": 2.3803,
+        "code": 1.332,
+        "general": 2.2565
+      },
+      "statistic": "min d_comm over domains (worst-domain, not average)",
+      "n_prompts": 250,
+      "cos_sim_min": 0.9552738869708123,
+      "cos_sim_mean": 0.996492311292117
+    }
+  },
+  "metadata": {
+    "hostname": "3922ef7517eb",
+    "platform": "Linux-6.8.0-106-generic-x86_64-with-glibc2.35",
+    "python": "3.11.10",
+    "timestamp_utc": "2026-07-12T07:58:38Z",
+    "torch": "2.4.1+cu121",
+    "gpu": "NVIDIA H100 80GB HBM3",
+    "gpu_memory_bytes": 85017493504,
+    "cuda": "12.1",
+    "transformers": "4.46.3"
+  }
+}

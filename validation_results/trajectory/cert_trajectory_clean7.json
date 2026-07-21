@@ -1,0 +1,33 @@
+{
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "certified": false,
+  "threshold_d": 3.0,
+  "formula": "d_COMM = -log(E[4c*sqrt(1-c^2)] / 2), certified if d >= threshold",
+  "layers": {
+    "trajectory": {
+      "n_trajectories": 43,
+      "n_positions_total": 42755,
+      "d_comm": 0.0,
+      "d_min_position_in_worst_trajectory": 443,
+      "d_final_mean": 0.7536180776780135,
+      "divergence_bound": 2.0,
+      "certified": false,
+      "statistic": "min d over all positions of all reference trajectories"
+    }
+  },
+  "excluded_task_ids": [
+    "HumanEval/1",
+    "HumanEval/13",
+    "HumanEval/16",
+    "HumanEval/17",
+    "HumanEval/2",
+    "HumanEval/49",
+    "HumanEval/8"
+  ],
+  "validation_status": "flagship_validated",
+  "signature": {
+    "alg": "Ed25519",
+    "key_id": "threvo-labs-v1",
+    "value": "ZpI35O8ii76KhTiD2bhAHnHHPRag5XNFT2zwBd4aNm7S/OAfQkSRd+7kmIR+T/Nuk2lllpVzrd+RxVEOBLJmBQ=="
+  }
+}

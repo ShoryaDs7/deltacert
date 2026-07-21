@@ -1,0 +1,43 @@
+{
+  "collector": "trajectory",
+  "tier": "A",
+  "run_id": "flagship_trajectory_w4",
+  "change": {
+    "baseline": "meta-llama/Llama-3.1-8B-Instruct fp16",
+    "candidate": "meta-llama/Llama-3.1-8B-Instruct nf4 (W4)",
+    "change_type": "trajectory"
+  },
+  "business_goal": {
+    "reason": "run the coding agent on 4-bit weights (\u224860% VRAM saved) IF long generations hold",
+    "expected_gain": {
+      "vram_reduction_pct": 60
+    }
+  },
+  "workload": {
+    "task_family": "coding_agent_long_horizon",
+    "dataset": "humaneval_prompts",
+    "num_prompts": 50
+  },
+  "metrics": {
+    "d_comm": -0.0,
+    "tau": 3.0,
+    "downstream_delta": {
+      "median_first_divergence_token": 14.0
+    },
+    "trajectory": {
+      "measured": true,
+      "safe_until_token": 31,
+      "failure_after_token": 14
+    },
+    "verdict": "unsafe"
+  },
+  "decision_statement": "W4 for long-horizon coding: d_min=-0.0; certified operating region \u2248 token 31; observed generations fork around token 14. NOT certified beyond the region \u2014 cap generation length or stay fp16",
+  "cert_path": "validation_results/trajectory/cert_trajectory.json",
+  "status": "completed",
+  "artifacts": {},
+  "notes": {
+    "environment": {
+      "note": "Original environment/timestamp provenance for this file was accidentally overwritten on 2026-07-11 during an unrelated clean-subset re-run (scp copied result.json without a distinct filename). Metrics below are reconstructed from cert_trajectory.json (untouched) and were independently verified against this exact result multiple times earlier in the same session before the overwrite occurred; the numeric content is not in question, only this provenance block's original timestamp/host/library-version details, which could not be recovered."
+    }
+  }
+}

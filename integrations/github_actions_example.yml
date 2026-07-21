@@ -1,0 +1,42 @@
+name: DeltaCert Deployment Gate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  deltacert-gate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install DeltaCert
+        run: pip install deltacert
+
+      - name: Run DeltaCert gate
+        id: deltacert
+        run: |
+          python -m deltacert.integrations.cicd_hook \
+            --cert ./certs/llama3_70b_int4_tp4_certified.json \
+            --layers weight_quantization kv_cache_quantization allreduce_tp
+
+      - name: Show result
+        if: always()
+        run: |
+          echo "Certified: ${{ steps.deltacert.outputs.deltacert_certified }}"
+          echo "Reason: ${{ steps.deltacert.outputs.deltacert_reason }}"
+
+      # This step only runs if DeltaCert gate passed (exit code 0)
+      - name: Deploy to production
+        if: steps.deltacert.outputs.deltacert_certified == 'true'
+        run: |
+          echo "Certificate verified. Deploying..."
+          # your deploy command here

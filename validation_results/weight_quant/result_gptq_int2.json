@@ -1,0 +1,59 @@
+{
+  "collector": "weight_quant",
+  "tier": "A",
+  "run_id": "flagship_weight_quant_gptq_int2",
+  "change": {
+    "baseline": "meta-llama/Llama-3.1-8B-Instruct fp16",
+    "candidate": "meta-llama/Llama-3.1-8B-Instruct gptq_int2",
+    "change_type": "weight_quant"
+  },
+  "business_goal": {
+    "reason": "lower-bit weights = less serving VRAM \u2014 fewer GPUs for the same fleet",
+    "expected_gain": {
+      "vram_reduction_pct": 88
+    }
+  },
+  "workload": {
+    "task_family": "math_reasoning",
+    "dataset": "gsm8k",
+    "num_prompts": 250
+  },
+  "metrics": {
+    "d_comm": 0.0001,
+    "tau": 1.3,
+    "downstream_delta": {
+      "gsm8k_acc_drop_pts": -73.0
+    },
+    "per_domain": {
+      "math": 0.0104,
+      "multilingual": 0.0098,
+      "chat": 0.0125,
+      "code": 0.0001,
+      "general": 0.0222
+    },
+    "short_eval": {
+      "benchmark": "GSM8K 5-shot exact-match (subset)",
+      "delta_pct": -73.0,
+      "verdict_by_benchmark": "looks_unsafe"
+    },
+    "verdict": "unsafe"
+  },
+  "decision_statement": "gptq_int2: worst-domain d=0.0001 (code) vs tau=1.3 -> DO NOT deploy \u2014 certified unsafe; GSM8K moved -73.0 pts, consistent with the verdict.",
+  "cert_path": "/workspace/deltacert/validation/weight_quant/cert_gptq_int2.json",
+  "status": "completed",
+  "artifacts": {},
+  "notes": {
+    "environment": {
+      "timestamp_utc": "2026-07-06T08:53:02Z",
+      "python": "3.11.10",
+      "seed": 1234,
+      "torch": "2.11.0+cu130",
+      "transformers": "5.13.0",
+      "vllm": "0.24.0",
+      "bitsandbytes": "0.49.2",
+      "datasets": "5.0.0",
+      "gpu": "NVIDIA H100 80GB HBM3"
+    },
+    "row": "gptq_int2"
+  }
+}

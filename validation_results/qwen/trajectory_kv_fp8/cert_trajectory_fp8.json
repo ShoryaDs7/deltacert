@@ -1,0 +1,27 @@
+{
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "certified": true,
+  "threshold_d": 3.0,
+  "formula": "d_COMM = -log(E[4c*sqrt(1-c^2)] / 2), certified if d >= threshold",
+  "layers": {
+    "trajectory_kv_fp8": {
+      "n_trajectories": 43,
+      "n_positions_total": 30643,
+      "d_comm": 3.5170418924645253,
+      "d_min_position_in_worst_trajectory": 275,
+      "d_final_mean": 3.93952148179429,
+      "divergence_bound": 0.05937424622269811,
+      "certified": true,
+      "statistic": "min d over all positions of all reference trajectories"
+    }
+  },
+  "repetition_audit_flagged": [
+    "HumanEval/1"
+  ],
+  "validation_status": "implemented_pending_validation",
+  "signature": {
+    "alg": "Ed25519",
+    "key_id": "threvo-labs-v1",
+    "value": "aietDz2ii+bxjspYY8xySFML7tzlM2XfSFslB5b523XWAcPL0gDhi9yJYFrsiW11LLRNGn4NQclQMGubKzCGBw=="
+  }
+}

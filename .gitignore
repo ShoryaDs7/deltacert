@@ -1,0 +1,46 @@
+# Signing keys — private keys must NEVER be committed. Only the public key
+# (deltacert-public.pem) is safe to publish, and it's explicitly whitelisted
+# below. See deltacert/signing.py and README for the sign/verify workflow.
+*.pem
+!deltacert-public.pem
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+*.egg
+
+# Environments
+.env
+.venv
+env/
+venv/
+
+# OS / editor
+.DS_Store
+.vscode/
+.idea/
+.claude/*
+!.claude/skills/
+!.claude/skills/**
+
+# Anonymized-submission build scratch — not part of the product, not useful
+# to anyone adopting DeltaCert. Excluded from the public repo.
+scratch_review/
+
+# Output of examples/example_certify.py — regenerate locally, don't commit.
+llama3_70b_int4_tp4_certified.json
+
+# Raw intermediate logit dumps from validation runs — large (100MB+),
+# regenerable via the run_flagship.py scripts, and exceed GitHub's file size
+# limit. The small derived cert_*.json/result.json files (the actual
+# evidence) are kept; only the raw per-token logit tensors behind them are
+# excluded.
+validation/**/_base_logits.npy
+validation/**/_quant_logits.npy
+validation_results/**/_base_logits.npy
+validation_results/**/_quant_logits.npy

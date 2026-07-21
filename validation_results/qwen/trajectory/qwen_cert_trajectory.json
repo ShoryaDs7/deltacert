@@ -1,0 +1,17 @@
+{
+  "model": "Qwen/Qwen2.5-7B-Instruct",
+  "certified": false,
+  "threshold_d": 3.0,
+  "layers": {
+    "trajectory": {
+      "n_trajectories": 39,
+      "n_positions_total": 20679,
+      "d_comm": 0.0,
+      "d_min_position_in_worst_trajectory": 17,
+      "d_final_mean": 0.8901247998405122,
+      "divergence_bound": 2.0,
+      "certified": false,
+      "statistic": "min d over all positions of all reference trajectories"
+    }
+  }
+}

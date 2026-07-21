@@ -1,0 +1,49 @@
+{
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "certified": false,
+  "threshold_d": 3.0,
+  "formula": "d_COMM = -log(E[4c*sqrt(1-c^2)] / 2), certified if d >= threshold",
+  "layers": {
+    "weight_quant": {
+      "d_comm": 0.4506,
+      "divergence_bound": 1.274534,
+      "certified": false,
+      "budget": 3.0,
+      "n_samples": 250,
+      "n_domains": 5,
+      "worst_domain": "math",
+      "per_domain": {
+        "math": 0.4506,
+        "multilingual": 0.7689,
+        "chat": 0.6135,
+        "code": 0.4738,
+        "general": 0.6511
+      },
+      "statistic": "min d_comm over domains (worst-domain, not average)",
+      "n_prompts": 250,
+      "cos_sim_min": 0.8225272120089078,
+      "cos_sim_mean": 0.9521237765125881
+    }
+  },
+  "metadata": {
+    "hostname": "6f073a981420",
+    "platform": "Linux-6.8.0-90-generic-x86_64-with-glibc2.35",
+    "python": "3.11.10",
+    "timestamp_utc": "2026-07-06T08:11:02Z",
+    "torch": "2.11.0+cu130",
+    "gpu": "NVIDIA H100 80GB HBM3",
+    "gpu_memory_bytes": 85017493504,
+    "cuda": "13.0",
+    "vllm": "0.24.0",
+    "transformers": "5.13.0",
+    "deltacert_version": "1.0.5"
+  },
+  "theorem": "Proposition 5.1, Shorya 2026",
+  "description": "",
+  "validation_status": "flagship_validated",
+  "signature": {
+    "alg": "Ed25519",
+    "key_id": "threvo-labs-v1",
+    "value": "12mH0oQHwtf3WXj4SFHiYmSpY7rhEX8P53gJxMQay6eghBS8p9AjL+ex93T2TMKBZUOO5zMqH+67NzX6Dq8FCQ=="
+  }
+}

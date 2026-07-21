@@ -1,0 +1,59 @@
+{
+  "collector": "kv_cache_quant",
+  "tier": "A",
+  "run_id": "flagship_kv_fp8",
+  "change": {
+    "baseline": "meta-llama/Llama-3.1-8B-Instruct KV cache default dtype",
+    "candidate": "meta-llama/Llama-3.1-8B-Instruct KV cache fp8 (vLLM native)",
+    "change_type": "kv_cache_quant"
+  },
+  "business_goal": {
+    "reason": "fp8 KV cache via vLLM's native --kv-cache-dtype flag \u2014 more concurrent requests on the same VRAM",
+    "expected_gain": {
+      "throughput_x": 2.0
+    }
+  },
+  "workload": {
+    "task_family": "math_reasoning_long_cot",
+    "dataset": "gsm8k",
+    "num_prompts": 100
+  },
+  "metrics": {
+    "d_comm": 4.8333,
+    "tau": 3.0,
+    "downstream_delta": {
+      "gsm8k_acc_drop_pts": -1.0
+    },
+    "per_domain": {
+      "math": 4.8643,
+      "multilingual": 5.1653,
+      "chat": 5.3261,
+      "code": 4.8333,
+      "general": 5.1624
+    },
+    "short_eval": {
+      "benchmark": "GSM8K 5-shot exact-match",
+      "delta_pct": -1.0,
+      "verdict_by_benchmark": "looks_safe"
+    },
+    "verdict": "safe"
+  },
+  "decision_statement": "KV-fp8 (vLLM native): worst-domain d=4.8333 (code) vs tau=3.0 -> SAFE \u2014 enable via vLLM --kv-cache-dtype flag fleet-wide; GSM8K moved -1.0 pts.",
+  "cert_path": "/workspace/deltacert/validation/kv_cache_quant/cert_kv_fp8.json",
+  "status": "completed",
+  "artifacts": {},
+  "notes": {
+    "environment": {
+      "timestamp_utc": "2026-07-06T10:44:58Z",
+      "python": "3.11.10",
+      "seed": 1234,
+      "torch": "2.11.0+cu130",
+      "transformers": "5.13.0",
+      "vllm": "0.24.0",
+      "bitsandbytes": "0.49.2",
+      "datasets": "5.0.0",
+      "gpu": "NVIDIA H100 80GB HBM3"
+    },
+    "kv_cache_dtype": "fp8"
+  }
+}

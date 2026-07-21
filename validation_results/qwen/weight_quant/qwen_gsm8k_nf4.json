@@ -1,0 +1,606 @@
+{
+  "fp16_acc": 0.85,
+  "nf4_acc": 0.85,
+  "records": [
+    {
+      "question": "Toula went to the bakery and bought various types of pastries. She bought 3 doze",
+      "gold": "694",
+      "pred": "694",
+      "correct": true
+    },
+    {
+      "question": "A merchant wants to make a choice of purchase between 2 purchase plans: jewelry ",
+      "gold": "125",
+      "pred": "125",
+      "correct": true
+    },
+    {
+      "question": "Gloria is shoe shopping when she comes across a pair of boots that fit her shoe ",
+      "gold": "104",
+      "pred": "100",
+      "correct": false
+    },
+    {
+      "question": "John takes care of 10 dogs.  Each dog takes .5 hours a day to walk and take care",
+      "gold": "35",
+      "pred": "35",
+      "correct": true
+    },
+    {
+      "question": "Mike plays ping pong for 40 minutes.  In the first 20 minutes, he scores 4 point",
+      "gold": "9",
+      "pred": "9",
+      "correct": true
+    },
+    {
+      "question": "Dana can run at a rate of speed four times faster than she can walk, but she can",
+      "gold": "18",
+      "pred": "18",
+      "correct": true
+    },
+    {
+      "question": "Jean has 30 lollipops. Jean eats 2 of the lollipops. With the remaining lollipop",
+      "gold": "14",
+      "pred": "14",
+      "correct": true
+    },
+    {
+      "question": "Aleena subscribed to a streaming service that charges her $140 per month. If the",
+      "gold": "1596",
+      "pred": "1696",
+      "correct": false
+    },
+    {
+      "question": "Kelian has two recipes for preparing dishes, one having 20 instructions and the ",
+      "gold": "60",
+      "pred": "60",
+      "correct": true
+    },
+    {
+      "question": "Charlie had 10 stickers. He bought 21 stickers from a store in the mall and got ",
+      "gold": "17",
+      "pred": "17",
+      "correct": true
+    },
+    {
+      "question": "Grace weighs 125 pounds. Alex weighs 2 pounds less than 4 times what Grace weigh",
+      "gold": "623",
+      "pred": "623",
+      "correct": true
+    },
+    {
+      "question": "A football team played 22 games. They won 8 more than they lost. How many did th",
+      "gold": "15",
+      "pred": "15",
+      "correct": true
+    },
+    {
+      "question": "Emily has 4 kids named Amy, Jackson, Corey, and James. Amy is 5 years older than",
+      "gold": "4",
+      "pred": "4",
+      "correct": true
+    },
+    {
+      "question": "In a neighborhood, the number of rabbits pets is twelve less than the combined n",
+      "gold": "348",
+      "pred": "348",
+      "correct": true
+    },
+    {
+      "question": "Marcell and Beatrice are having a contest to see who can eat the most fruit roll",
+      "gold": "45",
+      "pred": "45",
+      "correct": true
+    },
+    {
+      "question": "A hospital sees 500 people a day.  Each patient is seen for an average of 24 min",
+      "gold": "10000",
+      "pred": "10000",
+      "correct": true
+    },
+    {
+      "question": "Pam and Fred went to a carnival. Pam rode the roller coaster 2 times while Fred ",
+      "gold": "60",
+      "pred": "60",
+      "correct": true
+    },
+    {
+      "question": "Of the 20 available cars for rent, 12 are automatic cars, 4 are manual cars, and",
+      "gold": "20",
+      "pred": "20",
+      "correct": true
+    },
+    {
+      "question": "Kim has started his own housekeeping business and is calculating how much profit",
+      "gold": "20",
+      "pred": "20",
+      "correct": true
+    },
+    {
+      "question": "On Mondays, Wednesdays, and Fridays, college student Kimo has three 1-hour  clas",
+      "gold": "272",
+      "pred": "272",
+      "correct": true
+    },
+    {
+      "question": "The zookeeper feeds all the apes in the zoo. He orders all the bananas from a lo",
+      "gold": "1400",
+      "pred": "1400",
+      "correct": true
+    },
+    {
+      "question": "Jake is walking through the Museum of Entomology. He sees 80 spiders with 8 legs",
+      "gold": "1210",
+      "pred": "1210",
+      "correct": true
+    },
+    {
+      "question": "Jean is two years older than Mark.  Two years ago Mark was 5 years older than ha",
+      "gold": "23",
+      "pred": "23",
+      "correct": true
+    },
+    {
+      "question": "Jenna and her mother picked some apples from their apple farm. Jenna picked half",
+      "gold": "30",
+      "pred": "30",
+      "correct": true
+    },
+    {
+      "question": "Russell works at a pet store and is distributing straw among the rodents. The ra",
+      "gold": "5",
+      "pred": "5",
+      "correct": true
+    },
+    {
+      "question": "John wins an award at work.  The award has a 1 time monetary reward of $5000 and",
+      "gold": "114200",
+      "pred": "114200",
+      "correct": true
+    },
+    {
+      "question": "Chad ordered a build-your-own burrito for lunch.  The base burrito is $6.50.  He",
+      "gold": "9",
+      "pred": "9",
+      "correct": true
+    },
+    {
+      "question": "Steve decides to start eating more tomatoes and decides to grows his own cherry ",
+      "gold": "21",
+      "pred": "28",
+      "correct": false
+    },
+    {
+      "question": "The number of students in a school hall was 1000. The hall had 3 entrances A, B,",
+      "gold": "280",
+      "pred": "280",
+      "correct": true
+    },
+    {
+      "question": "Bill starts on the 3rd floor. He rides the elevator up to the floor that's equal",
+      "gold": "18",
+      "pred": "18",
+      "correct": true
+    },
+    {
+      "question": "A car in the fast lane is traveling at 60 miles/hour. A car in the slow lane is ",
+      "gold": "16",
+      "pred": "16",
+      "correct": true
+    },
+    {
+      "question": "Will buys 15 oranges. When he gets home, he asks his 2 sons to wash as many oran",
+      "gold": "3",
+      "pred": "3",
+      "correct": true
+    },
+    {
+      "question": "Darren decides to do body exercises for a whole week. He does 100 pushups, 50 sq",
+      "gold": "370",
+      "pred": "370",
+      "correct": true
+    },
+    {
+      "question": "Watson works a 10-hour shift each day, five days a week. He earns $10 per hour a",
+      "gold": "3200",
+      "pred": "4800",
+      "correct": false
+    },
+    {
+      "question": "Solomon bought 20 marbles from his friend Johanna and added them to a store that",
+      "gold": "156",
+      "pred": "156",
+      "correct": true
+    },
+    {
+      "question": "Mason needs 30 ounces of sugar to make a batch of suckers and 70 ounces of sugar",
+      "gold": "310",
+      "pred": "310",
+      "correct": true
+    },
+    {
+      "question": "Laurel's friend gave her 24 baby outfits that her child no longer needed.  At he",
+      "gold": "87",
+      "pred": "87",
+      "correct": true
+    },
+    {
+      "question": "A factory used to make tractors, but now makes silos. When they made tractors, t",
+      "gold": "10",
+      "pred": "10",
+      "correct": true
+    },
+    {
+      "question": "John drives to his friend's house 200 miles away.  He drives at a speed of 70 mp",
+      "gold": "6",
+      "pred": "6",
+      "correct": true
+    },
+    {
+      "question": "Mary has 30 sheep. She gets 1 kg of milk from half of them and 2 kg of milk from",
+      "gold": "45",
+      "pred": "45",
+      "correct": true
+    },
+    {
+      "question": "Karan borrowed $3,650 for five months at an interest rate of 10%. She has to pay",
+      "gold": "803",
+      "pred": "803",
+      "correct": true
+    },
+    {
+      "question": "Carolyn works for a delivery service company that hires on a contract basis. In ",
+      "gold": "168000",
+      "pred": "18",
+      "correct": false
+    },
+    {
+      "question": "The area of Billie's rectangular bedroom is 360 square feet. If the length of hi",
+      "gold": "98",
+      "pred": "98",
+      "correct": true
+    },
+    {
+      "question": "Stetson made a bet with Alec that he would give up $10 for each orange he eats. ",
+      "gold": "240",
+      "pred": "240",
+      "correct": true
+    },
+    {
+      "question": "For a New Year's resolution, Andy wants to lose 30 lbs. by his birthday, which i",
+      "gold": "525",
+      "pred": "521",
+      "correct": false
+    },
+    {
+      "question": "Gerald works at a daycare that pays him $30 every day. He worked for an entire w",
+      "gold": "110",
+      "pred": "110",
+      "correct": true
+    },
+    {
+      "question": "Jeff\u2019s work is 3 miles away.  He walks there and back each day he works.  How ma",
+      "gold": "30",
+      "pred": "30",
+      "correct": true
+    },
+    {
+      "question": "A marketing company pays its employees on a commission-based salary system. If y",
+      "gold": "450",
+      "pred": "450",
+      "correct": true
+    },
+    {
+      "question": "How much does it cost you for lunch today at Subway if you pay $40 for a foot-lo",
+      "gold": "160",
+      "pred": "160",
+      "correct": true
+    },
+    {
+      "question": "James decides to buy birthday candles for his 2 sons.  One of them is 12 and the",
+      "gold": "12",
+      "pred": "12",
+      "correct": true
+    },
+    {
+      "question": "Shiloh is 44 years old today.  In 7 years, he will be three times as old as his ",
+      "gold": "10",
+      "pred": "10",
+      "correct": true
+    },
+    {
+      "question": "For four hours, Patrick sold 15 cups of lemonade per hour at a price of $0.50 pe",
+      "gold": "42",
+      "pred": "42",
+      "correct": true
+    },
+    {
+      "question": "Gary does laundry twice a week. Each load of laundry uses 20 gallons of water, a",
+      "gold": "312",
+      "pred": "312",
+      "correct": true
+    },
+    {
+      "question": "Each pole on a road intersection has 4 street lights. If the number of poles at ",
+      "gold": "76",
+      "pred": "76",
+      "correct": true
+    },
+    {
+      "question": "Arianna plants a garden that has 10 rows of flowers with 20 flowers in each row.",
+      "gold": "160",
+      "pred": "160",
+      "correct": true
+    },
+    {
+      "question": "Chris has a two-speed lawn mower. He can mow his entire lawn in \"turtle\" mode in",
+      "gold": "50",
+      "pred": "50",
+      "correct": true
+    },
+    {
+      "question": "There is space for 20 pencils in the box. If there are 4 pencils missing from th",
+      "gold": "8",
+      "pred": "8",
+      "correct": true
+    },
+    {
+      "question": "Given a 7-day week, how much does Alex charge for 2 weeks of tutoring if she cha",
+      "gold": "168",
+      "pred": "168",
+      "correct": true
+    },
+    {
+      "question": "An ice cream factory makes 100 quarts of chocolate ice cream in 2 hours.  It can",
+      "gold": "3000",
+      "pred": "3000",
+      "correct": true
+    },
+    {
+      "question": "A company wanted to buy 500 computers and had $700 for each computer. However, w",
+      "gold": "385000",
+      "pred": "385000",
+      "correct": true
+    },
+    {
+      "question": "Topher, the green giant, wears enormous shoes.  The length of one of his shoes i",
+      "gold": "10",
+      "pred": "10",
+      "correct": true
+    },
+    {
+      "question": "Hannah has a mental breakdown while studying for finals and starts smashing wind",
+      "gold": "112",
+      "pred": "112",
+      "correct": true
+    },
+    {
+      "question": "Tatiana is deciding how much of her weekend she wants to spend playing soccer. S",
+      "gold": "50",
+      "pred": "50",
+      "correct": true
+    },
+    {
+      "question": "At the trip to the county-level scavenger hunt competition, 90 people were requi",
+      "gold": "108",
+      "pred": "12",
+      "correct": false
+    },
+    {
+      "question": "A basket of green food costs $25 and a basket of red food costs $18. If you buy ",
+      "gold": "123",
+      "pred": "123",
+      "correct": true
+    },
+    {
+      "question": "John rents his car out 10 times a month for 3 hours each time.  He gets paid $25",
+      "gold": "250",
+      "pred": "250",
+      "correct": true
+    },
+    {
+      "question": "Denise and Daniel are reading the same book. Yesterday, Denise read 10 pages whi",
+      "gold": "15",
+      "pred": "15",
+      "correct": true
+    },
+    {
+      "question": "The educational shop is selling notebooks for $1.50 each and a ballpen at $0.5 e",
+      "gold": "8",
+      "pred": "8",
+      "correct": true
+    },
+    {
+      "question": "Rita hand-picks Junebugs off of her plants every summer.  On Monday, she removed",
+      "gold": "60",
+      "pred": "58",
+      "correct": false
+    },
+    {
+      "question": "When Sophie watches her nephew, she gets out a variety of toys for him. The bag ",
+      "gold": "14",
+      "pred": "14",
+      "correct": true
+    },
+    {
+      "question": "Marcus is half of Leo\u2019s age and five years younger than Deanna. Deanna is 26. Ho",
+      "gold": "42",
+      "pred": "42",
+      "correct": true
+    },
+    {
+      "question": "The book is printed on paper that, when stacked, is 100 pages to the inch. Each ",
+      "gold": "300",
+      "pred": "150",
+      "correct": false
+    },
+    {
+      "question": "Jonathan has 2/3 as many measuring spoons as measuring cups. If he has two dozen",
+      "gold": "34",
+      "pred": "34",
+      "correct": true
+    },
+    {
+      "question": "Courtney attended a concert and reported that the audience was 48 in number. How",
+      "gold": "40",
+      "pred": "40",
+      "correct": true
+    },
+    {
+      "question": "John just started watching a new show.  Each episode is 20 minutes long, and the",
+      "gold": "200",
+      "pred": "200",
+      "correct": true
+    },
+    {
+      "question": "Andy works in the pro shop of a tennis resort. He has 12 racquets that need rest",
+      "gold": "227",
+      "pred": "227",
+      "correct": true
+    },
+    {
+      "question": "Tyler wants to buy a dictionary that costs $18, a dinosaur book that costs $13, ",
+      "gold": "5",
+      "pred": "5",
+      "correct": true
+    },
+    {
+      "question": "Edgar eats 18 pretzels a day. If his brother eats 1/2 as many, how many does his",
+      "gold": "63",
+      "pred": "63",
+      "correct": true
+    },
+    {
+      "question": "Comet Halley orbits the sun every 75 years. Bill's dad saw the Comet when he was",
+      "gold": "15",
+      "pred": "112.5",
+      "correct": false
+    },
+    {
+      "question": "Four children are playing together\u2014Akbar, Alessandro, Helene, and Wilfred. Helen",
+      "gold": "3",
+      "pred": "4",
+      "correct": false
+    },
+    {
+      "question": "Anne purchased a box of sweets that contains 15 packs, and each pack has 60 piec",
+      "gold": "78",
+      "pred": "78",
+      "correct": true
+    },
+    {
+      "question": "Mrs. Tatiana owns a grocery store that sells different fruits and vegetables, wh",
+      "gold": "138",
+      "pred": "139",
+      "correct": false
+    },
+    {
+      "question": "Marcus is trying to decide whether he really needs to do his homework. There's a",
+      "gold": "24",
+      "pred": "0.46",
+      "correct": false
+    },
+    {
+      "question": "On Monday the post office delivered 425 letters. On Tuesday they delivered 17 mo",
+      "gold": "736",
+      "pred": "736",
+      "correct": true
+    },
+    {
+      "question": "My kitchen floor has a total area of 200 SqFt. I want to install new square floo",
+      "gold": "2400",
+      "pred": "2400",
+      "correct": true
+    },
+    {
+      "question": "James gets 80 emails a day.  20% of those emails don't require any response.  He",
+      "gold": "320",
+      "pred": "320",
+      "correct": true
+    },
+    {
+      "question": "If Sam and Harry have 100 feet of fence between them, and they agree to split it",
+      "gold": "20",
+      "pred": "20",
+      "correct": true
+    },
+    {
+      "question": "A crocodile grows 8 inches long in 4 years. At this rate, how many inches will i",
+      "gold": "26",
+      "pred": "26",
+      "correct": true
+    },
+    {
+      "question": "My mom went to a gardening shop. She bought a set of pots for $19 and a sack of ",
+      "gold": "38",
+      "pred": "38",
+      "correct": true
+    },
+    {
+      "question": "Russell orders his favorite bagels online.  Each pack of bagels costs $10.00 and",
+      "gold": "1",
+      "pred": "1",
+      "correct": true
+    },
+    {
+      "question": "If Chester eats 3 eggs a day for 30 days and then increases it to 5 eggs a day f",
+      "gold": "20",
+      "pred": "20",
+      "correct": true
+    },
+    {
+      "question": "Carlos, Jim and Carrey were at the beach playing and they decided to gather some",
+      "gold": "20",
+      "pred": "20",
+      "correct": true
+    },
+    {
+      "question": "The cheese pizza is cut into 12 slices and the pepperoni pizza is cut into 8 sli",
+      "gold": "6",
+      "pred": "6",
+      "correct": true
+    },
+    {
+      "question": "Jen works for 7.5 hours a day 6 days a week. Her hourly rate is $1.5. Jen also r",
+      "gold": "280",
+      "pred": "280",
+      "correct": true
+    },
+    {
+      "question": "Jason was told he could earn $3.00 for doing his laundry,  $1.50 for cleaning hi",
+      "gold": "9",
+      "pred": "8",
+      "correct": false
+    },
+    {
+      "question": "Mattison is 60 inches tall. His two-story house is 7 times as high as he is. The",
+      "gold": "240",
+      "pred": "180",
+      "correct": false
+    },
+    {
+      "question": "Cedar Falls Middle School has students in grades 4 \u2013 7 and each year they are ch",
+      "gold": "225",
+      "pred": "225",
+      "correct": true
+    },
+    {
+      "question": "Sally received the following scores on her math quizzes: 50, 80, 80, 60, 40, 90,",
+      "gold": "70",
+      "pred": "70",
+      "correct": true
+    },
+    {
+      "question": "Alicia's clothes have to be sent to the dry cleaners weekly.  Her weekly drop-of",
+      "gold": "235",
+      "pred": "235",
+      "correct": true
+    },
+    {
+      "question": "James wants to hang crepe-paper streamers from his backyard fence for his birthd",
+      "gold": "70",
+      "pred": "70",
+      "correct": true
+    }
+  ]
+}

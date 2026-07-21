@@ -1,0 +1,63 @@
+{
+  "collector": "spec_decoding",
+  "tier": "A",
+  "run_id": "flagship_spec_decode",
+  "change": {
+    "baseline": "meta-llama/Llama-3.1-8B-Instruct standard decode",
+    "candidate": "meta-llama/Llama-3.1-8B-Instruct + meta-llama/Llama-3.2-1B-Instruct spec decode (k=5)",
+    "change_type": "spec_decoding"
+  },
+  "business_goal": {
+    "reason": "speculative decoding \u2248 2x decode throughput at claimed-lossless quality",
+    "expected_gain": {
+      "throughput_x": 0.28
+    }
+  },
+  "workload": {
+    "task_family": "math_reasoning",
+    "dataset": "gsm8k",
+    "num_prompts": 100
+  },
+  "metrics": {
+    "d_comm": 15.3849,
+    "tau": 3.0,
+    "downstream_delta": {
+      "gsm8k_acc_drop_pts": 0.0,
+      "measured_speedup_x": 0.28
+    },
+    "per_domain": {
+      "math": 15.718,
+      "multilingual": 15.3849,
+      "chat": 18.3907,
+      "code": 15.7477,
+      "general": 18.0609
+    },
+    "short_eval": {
+      "benchmark": "GSM8K 5-shot exact-match",
+      "delta_pct": 0.0,
+      "verdict_by_benchmark": "looks_safe"
+    },
+    "verdict": "safe"
+  },
+  "decision_statement": "spec decode (k=5): worst-domain d=15.3849 (multilingual), measured 0.28x throughput, GSM8K +0.0 pts -> certified: enable fleet-wide for this config",
+  "cert_path": "/workspace/deltacert/validation/spec_decoding/cert_spec.json",
+  "status": "completed",
+  "artifacts": {},
+  "notes": {
+    "environment": {
+      "timestamp_utc": "2026-07-06T11:58:58Z",
+      "python": "3.11.10",
+      "seed": 1234,
+      "torch": "2.11.0+cu130",
+      "transformers": "5.13.0",
+      "vllm": "0.24.0",
+      "bitsandbytes": "0.49.2",
+      "datasets": "5.0.0",
+      "gpu": "NVIDIA H100 80GB HBM3"
+    },
+    "vllm_config": {
+      "model": "meta-llama/Llama-3.2-1B-Instruct",
+      "num_speculative_tokens": 5
+    }
+  }
+}

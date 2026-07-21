@@ -1,0 +1,50 @@
+{
+  "collector": "trajectory",
+  "tier": "A",
+  "run_id": "flagship_trajectory_w4_clean",
+  "change": {
+    "baseline": "meta-llama/Llama-3.1-8B-Instruct fp16",
+    "candidate": "meta-llama/Llama-3.1-8B-Instruct nf4 (W4)",
+    "change_type": "trajectory"
+  },
+  "business_goal": {
+    "reason": "run the coding agent on 4-bit weights (≈60% VRAM saved) IF long generations hold",
+    "expected_gain": {
+      "vram_reduction_pct": 60
+    }
+  },
+  "workload": {
+    "task_family": "coding_agent_long_horizon",
+    "dataset": "humaneval_prompts_clean_46",
+    "num_prompts": 46
+  },
+  "metrics": {
+    "d_comm": -0.0,
+    "tau": 3.0,
+    "downstream_delta": {
+      "median_first_divergence_token": 14.0
+    },
+    "trajectory": {
+      "measured": true,
+      "safe_until_token": 31,
+      "failure_after_token": 14
+    },
+    "verdict": "unsafe"
+  },
+  "decision_statement": "W4 for long-horizon coding, re-run on 46 references with the 4 confirmed degenerate-repetition references (HumanEval/1, 8, 13, 17) excluded: d_min=-0.0; certified operating region ≈ token 31; observed generations fork around token 14 — identical to the original 50-reference result. NOT certified beyond the region — cap generation length or stay fp16",
+  "cert_path": "validation_results/trajectory/cert_trajectory_clean.json",
+  "status": "completed",
+  "artifacts": {},
+  "notes": {
+    "environment": {
+      "timestamp_utc": "2026-07-11T13:47:18Z",
+      "python": "3.11.10",
+      "seed": 1234,
+      "torch": "2.4.1+cu124",
+      "transformers": "4.46.3",
+      "bitsandbytes": "0.49.2",
+      "datasets": "5.0.0",
+      "gpu": "NVIDIA H100 80GB HBM3"
+    }
+  }
+}

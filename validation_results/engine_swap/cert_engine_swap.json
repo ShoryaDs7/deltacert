@@ -1,0 +1,37 @@
+{
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "description": "",
+  "certified": true,
+  "formula": "d_COMM = -log(E[4c*sqrt(1-c^2)] / 2), certified if d >= budget",
+  "theorem": "Proposition 5.1, Shorya 2026",
+  "layers": {
+    "engine_swap": {
+      "d_comm": 16.0909,
+      "divergence_bound": 0.0,
+      "certified": true,
+      "budget": 3.0,
+      "n_samples": 250
+    }
+  },
+  "metadata": {
+    "certified_at": "2026-07-06T14:18:29.883492+00:00",
+    "model_id": "meta-llama/Llama-3.1-8B-Instruct",
+    "model_id_hash": "08a20b291e447c95",
+    "host": "708cc9ec2888",
+    "platform": "Linux-6.8.0-90-generic-x86_64-with-glibc2.35",
+    "python": "3.11.10",
+    "deltacert_version": "1.0.5",
+    "torch_version": "2.11.0+cu130",
+    "cuda_version": "13.0",
+    "gpu_count": 1,
+    "gpu_name": "NVIDIA H100 80GB HBM3",
+    "gpu_memory_gb": 85.0
+  },
+  "threshold_d": 3.0,
+  "validation_status": "flagship_validated",
+  "signature": {
+    "alg": "Ed25519",
+    "key_id": "threvo-labs-v1",
+    "value": "NyH942guJFZS1FpFuBbSD3SX2GgIJx5GAGHoAmrl+CocgpuHDIQ+m3AIwYlffUevT4sFugfuQmAPXzS8lPJIAw=="
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "collector": "provider_drift",
+  "tier": "A",
+  "run_id": "provider_drift_snapshot_vs_alias_proxy",
+  "change": {
+    "baseline": "gpt-4o-mini-2024-07-18 (immutable pinned snapshot)",
+    "candidate": "gpt-4o-mini (current floating alias, today)",
+    "change_type": "provider_drift_proxy"
+  },
+  "business_goal": {
+    "reason": "same-day proxy for provider drift risk \u2014 detects drift that already happened between the pinned snapshot's release and today, without waiting weeks for a real re-run"
+  },
+  "workload": {
+    "task_family": "math_reasoning",
+    "dataset": "gsm8k_50",
+    "num_prompts": 250
+  },
+  "metrics": {
+    "d_comm": 6.6508,
+    "tau": 3.0,
+    "downstream_delta": {
+      "canary_acc_drop_pts": 0.0
+    },
+    "per_domain": {
+      "math": 6.6743,
+      "multilingual": 6.6508,
+      "chat": 7.2937,
+      "code": 7.438,
+      "general": 6.7827
+    },
+    "verdict": "safe"
+  },
+  "decision_statement": "SAME-DAY PROXY (not the real weekly drift measurement): gpt-4o-mini vs pinned gpt-4o-mini-2024-07-18: worst-domain d=6.6508 (multilingual) -> no material difference detected between pinned snapshot and current alias; GSM8K +0.0 pts vs pinned snapshot.",
+  "cert_path": "/workspace/deltacert/validation/provider_drift/cert_snapshot_vs_alias.json",
+  "status": "completed",
+  "artifacts": {},
+  "notes": {
+    "environment": {
+      "timestamp_utc": "2026-07-06T14:38:10Z",
+      "python": "3.11.10",
+      "seed": 1234,
+      "torch": "2.11.0+cu130",
+      "transformers": "5.13.0",
+      "vllm": "0.24.0",
+      "bitsandbytes": "0.49.2",
+      "datasets": "5.0.0",
+      "gpu": "NVIDIA H100 80GB HBM3"
+    },
+    "caveat": "This is a same-day proxy comparing a pinned dated snapshot to the current floating alias, NOT the real weekly-cadence drift measurement in check.py. It only detects drift that already occurred between the pinned snapshot's release and today."
+  }
+}

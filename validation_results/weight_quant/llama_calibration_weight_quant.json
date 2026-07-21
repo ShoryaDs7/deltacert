@@ -1,0 +1,84 @@
+{
+  "families": {
+    "bnb": {
+      "calibrated_tau": 0.5775,
+      "provisional": true,
+      "n_configs": 2,
+      "n_safe_configs": 2,
+      "n_damaged_configs": 0,
+      "rows": [
+        {
+          "name": "int8",
+          "downstream_drop_pts": 0.0,
+          "downstream_drop_pts_source": "user-provided",
+          "materially_degraded": false,
+          "d_comm": 1.153,
+          "certified_at_calibrated_tau": true
+        },
+        {
+          "name": "nf4",
+          "downstream_drop_pts": 1.0,
+          "downstream_drop_pts_source": "user-provided",
+          "materially_degraded": false,
+          "d_comm": 0.5775,
+          "certified_at_calibrated_tau": true
+        }
+      ],
+      "caveat": "PROVISIONAL: every 'bnb' config in this sweep (n=2) was undamaged - there is no damaged config to set a two-sided boundary from. tau is placed at the lowest observed (undamaged) d_comm, which means the boundary-exact config certifies with zero margin ('>=', not '>') - measurement noise on a config sitting at exactly this d_comm could flip its verdict. Measure at least one damaged config in this family to firm this up."
+    },
+    "gptq": {
+      "calibrated_tau": 2.1636,
+      "provisional": true,
+      "n_configs": 3,
+      "n_safe_configs": 0,
+      "n_damaged_configs": 3,
+      "rows": [
+        {
+          "name": "gptq_int4",
+          "downstream_drop_pts": -8.0,
+          "downstream_drop_pts_source": "user-provided",
+          "materially_degraded": true,
+          "d_comm": 1.1636,
+          "certified_at_calibrated_tau": false
+        },
+        {
+          "name": "gptq_int3",
+          "downstream_drop_pts": -17.0,
+          "downstream_drop_pts_source": "user-provided",
+          "materially_degraded": true,
+          "d_comm": 0.4506,
+          "certified_at_calibrated_tau": false
+        },
+        {
+          "name": "gptq_int2",
+          "downstream_drop_pts": -73.0,
+          "downstream_drop_pts_source": "user-provided",
+          "materially_degraded": true,
+          "d_comm": 0.0001,
+          "certified_at_calibrated_tau": false
+        }
+      ],
+      "caveat": "PROVISIONAL: every 'gptq' config in this sweep (n=3) showed real downstream damage - there is no undamaged config to set a two-sided safe floor from. tau is a lower bound consistent with the data (placed just above the worst observed damage), not a measured safe/unsafe boundary. Any tau above the worst-damage point in this sweep is equally consistent with it - measure at least one undamaged config in this family to firm this up."
+    }
+  },
+  "n_families": 2,
+  "downstream_degradation_threshold_pts": 2.0,
+  "caveat": "d_comm is not comparable across quantization methods, so tau is calibrated independently per method_family \u2014 see each family's own 'caveat' for its specific confidence level. Pooling families into one tau produces a false-safe when an undamaged config from one family sits below a damaged config from another on the pooled axis (see paper \u00a73.4 / SPEC.md).",
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "layer": "weight_quant",
+  "note": "cos_sims reconstructed from the exact d_comm values stored in the shipped certificates (cert_int8.json, cert_nf4.json, cert_gptq_int4/3/2.json) via the inverse of Eq.1 (d_comm is a bijective function of cosine similarity in the unclamped regime, [0.95,1.0] here) -- raw cos_sims arrays were not persisted to disk at capture time, only their derived d_comm. Reproduces the shipped d_comm to 4 decimal places for every config.",
+  "shipped_default_consistency_check": {
+    "bnb": {
+      "shipped_tau": 0.5,
+      "computed_tau": 0.5775,
+      "consistent": true,
+      "reason": "both bnb configs certify safe under either tau (both d_comm > both thresholds)"
+    },
+    "gptq": {
+      "shipped_tau": 1.3,
+      "computed_tau": 2.1636,
+      "consistent": true,
+      "reason": "all three gptq configs certify unsafe under either tau (all d_comm < both thresholds)"
+    }
+  }
+}

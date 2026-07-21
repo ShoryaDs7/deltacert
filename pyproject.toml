@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "deltacert"
+version = "1.2.2"
+description = "Calibrated divergence certification for LLM serving systems"
+readme = "README.md"
+requires-python = ">=3.9"
+license = "Apache-2.0"
+license-files = ["LICENSE"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+]
+dependencies = [
+    "numpy",
+    "torch>=2.0",
+    "transformers>=4.38",
+    "accelerate>=0.30",
+    "cryptography>=42.0",
+]
+
+[project.optional-dependencies]
+bnb  = ["bitsandbytes>=0.43"]
+peft = ["peft>=0.9"]
+vllm = ["vllm>=0.4"]
+gptq = ["gptqmodel>=1.0", "optimum>=1.20"]
+validation = ["datasets>=2.20", "lm-eval>=0.4", "matplotlib", "human-eval>=1.0"]
+
+[project.scripts]
+deltacert = "deltacert.cli:main"
+
+[project.entry-points."vllm.general_plugins"]
+deltacert = "deltacert.integrations.vllm_integration:register"
+
+[tool.setuptools]
+package-dir = { "deltacert" = "." }
+packages = ["deltacert", "deltacert.integrations"]

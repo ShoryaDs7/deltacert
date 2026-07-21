@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/threvo-labs/deltacert/deltacert-schema.json",
+  "title": "DeltaCert Certificate",
+  "description": "Schema for DeltaCert certificate JSON artifacts, produced by deltacert.py::certify() and collectors.py::certify_from_layers(). Both cert-builder code paths emit this same shape. A cert may optionally carry a `signature` block (see deltacert.signing) making it a signed, tamper-evident artifact.",
+  "type": "object",
+  "required": ["model", "certified", "threshold_d", "formula", "validation_status", "layers"],
+  "properties": {
+    "model": {
+      "type": "string",
+      "description": "Model identifier this certificate was issued for."
+    },
+    "description": {
+      "type": "string",
+      "description": "Free-text description of the certified configuration."
+    },
+    "certified": {
+      "type": "boolean",
+      "description": "True only if every layer in `layers` independently certified."
+    },
+    "threshold_d": {
+      "type": "number",
+      "description": "Default/reference d_COMM threshold. Per-layer `budget` (inside each layers[*] entry) is the authoritative gating value actually used."
+    },
+    "formula": {
+      "type": "string",
+      "description": "Human-readable statement of the d_COMM formula used to compute this certificate."
+    },
+    "theorem": {
+      "type": "string",
+      "description": "Citation for the theoretical result the divergence bound is derived from."
+    },
+    "validation_status": {
+      "type": "string",
+      "enum": ["flagship_validated", "implemented_pending_validation"],
+      "description": "flagship_validated: every collector behind this cert has a real hardware run with a measured downstream benchmark published in the DeltaCert paper. implemented_pending_validation: at least one layer's collector is implemented and tested but has not been run through that end-to-end validation process yet. This field is signed as part of the certificate payload — it cannot be stripped without invalidating the signature, so a signature can never be used to make an unvalidated measurement look more trustworthy than it is."
+    },
+    "layers": {
+      "type": "object",
+      "description": "One entry per certified layer/collector, keyed by collector name.",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["d_comm", "certified"],
+        "properties": {
+          "d_comm": {
+            "oneOf": [
+              { "type": "number" },
+              { "type": "string", "const": "inf" }
+            ]
+          },
+          "divergence_bound": { "type": "number" },
+          "certified": { "type": "boolean" },
+          "budget": { "type": "number" },
+          "n_samples": { "type": "integer", "minimum": 0 },
+          "n_prompts": { "type": "integer", "minimum": 0 },
+          "n_domains": { "type": "integer", "minimum": 0 },
+          "worst_domain": { "type": "string" },
+          "per_domain": {
+            "type": "object",
+            "additionalProperties": { "type": "number" }
+          },
+          "statistic": { "type": "string" },
+          "cos_sim_min": { "type": "number", "minimum": -1, "maximum": 1 },
+          "cos_sim_mean": { "type": "number", "minimum": -1, "maximum": 1 },
+          "error": { "type": "string" }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Environment/provenance stamps. Shape varies slightly by collection path (see _build_metadata / _environment_metadata in the DeltaCert source) but both include at minimum certified_at and deltacert_version where available.",
+      "properties": {
+        "certified_at": { "type": "string" },
+        "deltacert_version": { "type": "string" },
+        "model_id_hash": { "type": "string" },
+        "host": { "type": "string" },
+        "hostname": { "type": "string" },
+        "platform": { "type": "string" },
+        "python": { "type": "string" }
+      }
+    },
+    "signature": {
+      "type": "object",
+      "description": "Present only if the certificate has been signed (deltacert sign). Its own value is computed over the certificate with this field excluded — see deltacert.signing.canonicalize.",
+      "required": ["alg", "value"],
+      "properties": {
+        "alg": { "type": "string", "const": "Ed25519" },
+        "key_id": { "type": "string" },
+        "value": {
+          "type": "string",
+          "description": "Base64-encoded Ed25519 signature bytes."
+        }
+      }
+    }
+  }
+}

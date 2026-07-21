@@ -1,0 +1,49 @@
+{
+  "model": "gpt-4o-mini vs pinned gpt-4o-mini-2024-07-18",
+  "certified": true,
+  "threshold_d": 3.0,
+  "formula": "d_COMM = -log(E[4c*sqrt(1-c^2)] / 2), certified if d >= threshold",
+  "layers": {
+    "provider_drift": {
+      "d_comm": 6.6508,
+      "divergence_bound": 0.002586,
+      "certified": true,
+      "budget": 3.0,
+      "n_samples": 250,
+      "n_domains": 5,
+      "worst_domain": "multilingual",
+      "per_domain": {
+        "math": 6.6743,
+        "multilingual": 6.6508,
+        "chat": 7.2937,
+        "code": 7.438,
+        "general": 6.7827
+      },
+      "statistic": "min d_comm over domains (worst-domain, not average)",
+      "n_prompts": 250,
+      "cos_sim_min": 0.9999953083026859,
+      "cos_sim_mean": 0.999999504645089
+    }
+  },
+  "metadata": {
+    "hostname": "708cc9ec2888",
+    "platform": "Linux-6.8.0-90-generic-x86_64-with-glibc2.35",
+    "python": "3.11.10",
+    "timestamp_utc": "2026-07-06T14:37:01Z",
+    "torch": "2.11.0+cu130",
+    "gpu": "NVIDIA H100 80GB HBM3",
+    "gpu_memory_bytes": 85017493504,
+    "cuda": "13.0",
+    "vllm": "0.24.0",
+    "transformers": "5.13.0",
+    "deltacert_version": "1.0.5"
+  },
+  "theorem": "Proposition 5.1, Shorya 2026",
+  "description": "",
+  "validation_status": "flagship_validated",
+  "signature": {
+    "alg": "Ed25519",
+    "key_id": "threvo-labs-v1",
+    "value": "JEv+BvAf88kqlE0l+bATe4FnLeUuV9ETPUKTjb4sVHV32wR7Hn1YWajvbAHphVcQLLfbYLQPl+NsOv1gsA9BBw=="
+  }
+}

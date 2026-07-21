@@ -1,0 +1,48 @@
+{
+  "model": "Qwen/Qwen2.5-3B-Instruct",
+  "description": "",
+  "certified": true,
+  "threshold_d": 3.0,
+  "formula": "d_COMM = -log(E[4c*sqrt(1-c^2)] / 2), certified if d >= threshold",
+  "theorem": "Proposition 5.1, Shorya 2026",
+  "validation_status": "flagship_validated",
+  "layers": {
+    "kv_cache_quant": {
+      "d_comm": 5.8273,
+      "divergence_bound": 0.005892,
+      "certified": true,
+      "budget": 3.0,
+      "n_samples": 250,
+      "n_domains": 5,
+      "worst_domain": "general",
+      "per_domain": {
+        "math": 5.982,
+        "multilingual": 5.9098,
+        "chat": 6.3198,
+        "code": 5.8646,
+        "general": 5.8273
+      },
+      "statistic": "min d_comm over domains (worst-domain, not average)",
+      "n_prompts": 250,
+      "cos_sim_min": 0.9999892921466766,
+      "cos_sim_mean": 0.9999978660627332
+    }
+  },
+  "metadata": {
+    "hostname": "DESKTOP-CDGQNCJ",
+    "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+    "python": "3.12.3",
+    "timestamp_utc": "2026-07-13T05:26:55Z",
+    "torch": "2.8.0+cu128",
+    "gpu": "NVIDIA GeForce RTX 3060",
+    "gpu_memory_bytes": 12884377600,
+    "cuda": "12.8",
+    "vllm": "0.10.2",
+    "transformers": "4.55.4"
+  },
+  "signature": {
+    "alg": "Ed25519",
+    "key_id": "threvo-labs-v1",
+    "value": "QykGva0LN8pnJ3gZPSzGHtdS8a12WUO1WL4JAHvLonhyXodTzr5JxWB6ApqOsQv34quwKWG5nZCnwarxqgZSCw=="
+  }
+}

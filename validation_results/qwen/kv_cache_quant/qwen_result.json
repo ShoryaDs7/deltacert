@@ -1,0 +1,60 @@
+{
+  "collector": "kv_cache_quant",
+  "tier": "A",
+  "run_id": "flagship_kv_fp8",
+  "change": {
+    "baseline": "Qwen/Qwen2.5-7B-Instruct KV cache default dtype",
+    "candidate": "Qwen/Qwen2.5-7B-Instruct KV cache fp8 (vLLM native)",
+    "change_type": "kv_cache_quant"
+  },
+  "business_goal": {
+    "reason": "fp8 KV cache via vLLM's native --kv-cache-dtype flag \u2014 more concurrent requests on the same VRAM",
+    "expected_gain": {
+      "throughput_x": 2.0
+    }
+  },
+  "workload": {
+    "task_family": "math_reasoning_long_cot",
+    "dataset": "gsm8k",
+    "num_prompts": 100
+  },
+  "metrics": {
+    "d_comm": 3.7164,
+    "tau": 3.0,
+    "downstream_delta": {
+      "gsm8k_acc_drop_pts": -88.0
+    },
+    "per_domain": {
+      "math": 3.9719,
+      "multilingual": 4.425,
+      "chat": 4.4449,
+      "code": 3.7164,
+      "general": 3.7183
+    },
+    "short_eval": {
+      "benchmark": "GSM8K 5-shot exact-match",
+      "delta_pct": -88.0,
+      "verdict_by_benchmark": "looks_unsafe"
+    },
+    "verdict": "safe",
+    "false_safe_single_position": true,
+    "flagship_verdict": "unsafe"
+  },
+  "decision_statement": "KV-fp8 (vLLM native) on Qwen2.5-7B-Instruct: single-position cert says SAFE (worst-domain d=3.7164 (code) vs tau=3.0), but GSM8K collapsed 88.0 -> 0.0 (-88.0 pts) and 87/100 generations degenerate. Flagged as false_safe_single_position; flagship_verdict overridden to UNSAFE by downstream evidence. Do NOT enable fleet-wide on this basis -- single-position certification is insufficient for this change type; trajectory-mode confirmation is required.",
+  "cert_path": "deltacert/validation_results/qwen/kv_cache_quant/qwen_cert_kv_fp8.json",
+  "status": "completed",
+  "artifacts": {},
+  "notes": {
+    "environment": {
+      "timestamp_utc": "2026-07-12T13:01:33Z",
+      "python": "3.11.10",
+      "seed": 1234,
+      "torch": "2.8.0+cu128",
+      "transformers": "4.55.4",
+      "vllm": "0.10.2",
+      "datasets": "5.0.0",
+      "gpu": "NVIDIA H100 80GB HBM3"
+    },
+    "kv_cache_dtype": "fp8"
+  }
+}

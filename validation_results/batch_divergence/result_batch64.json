@@ -1,0 +1,59 @@
+{
+  "collector": "batch_divergence",
+  "tier": "A",
+  "run_id": "flagship_batch_divergence_b64",
+  "change": {
+    "baseline": "meta-llama/Llama-3.1-8B-Instruct batch=1",
+    "candidate": "meta-llama/Llama-3.1-8B-Instruct batch=64",
+    "change_type": "batch_divergence"
+  },
+  "business_goal": {
+    "reason": "safely raise concurrent batch size \u2014 more requests served per GPU with the SAME weights and precision, zero quality tradeoff being made",
+    "expected_gain": {
+      "concurrency_x": 64
+    }
+  },
+  "workload": {
+    "task_family": "math_reasoning",
+    "dataset": "gsm8k",
+    "num_prompts": 250
+  },
+  "metrics": {
+    "d_comm": 6.2126,
+    "tau": 3.0,
+    "downstream_delta": {
+      "gsm8k_acc_drop_pts": -1.0
+    },
+    "per_domain": {
+      "math": 6.2877,
+      "multilingual": 6.2126,
+      "chat": 6.5473,
+      "code": 6.4458,
+      "general": 6.5539
+    },
+    "short_eval": {
+      "benchmark": "GSM8K 5-shot exact-match",
+      "delta_pct": -1.0,
+      "verdict_by_benchmark": "looks_safe"
+    },
+    "verdict": "safe"
+  },
+  "decision_statement": "batch=64: worst-domain d=6.2126 (multilingual) vs tau=3.0 -> SAFE \u2014 serve this many concurrent requests per GPU; GSM8K moved -1.0 pts vs batch=1.",
+  "cert_path": "/workspace/deltacert/validation/batch_divergence/cert_batch64.json",
+  "status": "completed",
+  "artifacts": {},
+  "notes": {
+    "environment": {
+      "timestamp_utc": "2026-07-06T14:48:31Z",
+      "python": "3.11.10",
+      "seed": 1234,
+      "torch": "2.11.0+cu130",
+      "transformers": "5.13.0",
+      "vllm": "0.24.0",
+      "bitsandbytes": "0.49.2",
+      "datasets": "5.0.0",
+      "gpu": "NVIDIA H100 80GB HBM3"
+    },
+    "batch_size": 64
+  }
+}

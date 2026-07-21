@@ -1,0 +1,51 @@
+{
+  "families": {
+    "gptq": {
+      "calibrated_tau": 3.1872,
+      "provisional": false,
+      "n_configs": 4,
+      "n_safe_configs": 1,
+      "n_damaged_configs": 3,
+      "rows": [
+        {
+          "name": "gptq_int8",
+          "downstream_drop_pts": -1.0,
+          "downstream_drop_pts_source": "user-provided",
+          "materially_degraded": false,
+          "d_comm": 3.1872,
+          "certified_at_calibrated_tau": true
+        },
+        {
+          "name": "gptq_int4",
+          "downstream_drop_pts": -8.0,
+          "downstream_drop_pts_source": "user-provided",
+          "materially_degraded": true,
+          "d_comm": 1.1636,
+          "certified_at_calibrated_tau": false
+        },
+        {
+          "name": "gptq_int3",
+          "downstream_drop_pts": -17.0,
+          "downstream_drop_pts_source": "user-provided",
+          "materially_degraded": true,
+          "d_comm": 0.4506,
+          "certified_at_calibrated_tau": false
+        },
+        {
+          "name": "gptq_int2",
+          "downstream_drop_pts": -73.0,
+          "downstream_drop_pts_source": "user-provided",
+          "materially_degraded": true,
+          "d_comm": 0.0001,
+          "certified_at_calibrated_tau": false
+        }
+      ],
+      "caveat": "Calibrated from n=4 'gptq' config(s) on this specific model/workload \u2014 not a universal constant. More configs measured over time firm this up, the same way DeltaCert's own shipped defaults are an initial calibration from n=5 configs (see deltacert.py's _PROVISIONAL_METHOD_BUDGETS)."
+    }
+  },
+  "n_families": 1,
+  "downstream_degradation_threshold_pts": 2.0,
+  "caveat": "d_comm is not comparable across quantization methods, so tau is calibrated independently per method_family \u2014 see each family's own 'caveat' for its specific confidence level. Pooling families into one tau produces a false-safe when an undamaged config from one family sits below a damaged config from another on the pooled axis (see paper \u00a73.4 / SPEC.md).",
+  "model": "meta-llama/Llama-3.1-8B-Instruct",
+  "layer": "weight_quant"
+}
