@@ -206,7 +206,7 @@ If you use DeltaCert, cite it as:
 ```bibtex
 @software{deltacert2026,
   title  = {DeltaCert: Calibrated Divergence Certification for LLM Serving Systems},
-  author = {Shorya},
+  author = {Dev Shorya},
   year   = {2026},
   url    = {https://pypi.org/project/deltacert/}
 }
