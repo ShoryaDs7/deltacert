@@ -317,7 +317,7 @@ class DeploymentBlocked(RuntimeError):
     """Raised by certify_safe when raise_on_fail=True and d < budget."""
 
 
-__version__ = "1.2.2"
+__version__ = "1.2.4"
 __all__ = [
     # Main API
     "certify_safe",
